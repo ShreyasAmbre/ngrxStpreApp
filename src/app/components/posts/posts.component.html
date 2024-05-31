@@ -1,0 +1,33 @@
+<div class="container">
+    <div class="row">
+        <div class="col-6">
+            <br><h4>Get Post - NgRx Store App</h4>
+            <div class="input-group mb-3">
+                <input type="text" [(ngModel)]="ptitle" name="ptitle" class="form-control" placeholder="Title">
+            </div>
+            <div class="input-group mb-3">
+                <input type="textarea" [(ngModel)]="pbody" name="pbody" class="form-control" placeholder="Description">
+            </div>
+            <button type="button" class="btn btn-primary" (click)="addSinglePost()">Submit</button>
+        </div>
+    </div>
+    <br>
+    <div class="row">
+        <div class="col-12">
+            <ol class="list-group list-group-numbered">
+                <!-- allPosts : is normal variable where we get data from service API -->
+                <!-- <ng-container *ngFor="let post of allPosts;"> --> 
+                <!-- posts$ : this is observable  getting data using reducer -->
+                <ng-container *ngFor="let post of posts$ | async;">
+                    <li class="list-group-item d-flex justify-content-between align-items-start">
+                        <div class="ms-2 me-auto">
+                          <div class="fw-bold">{{post.title}}</div>
+                          {{post.body}}
+                        </div>
+                        <span class="badge text-bg-primary rounded-pill">{{post.title.length}}</span>
+                      </li>
+                </ng-container>
+              </ol>
+        </div>
+    </div>
+</div>
